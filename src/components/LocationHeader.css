@@ -1,0 +1,28 @@
+.circle {
+  width:  15px;
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+}
+
+.subtitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+h1 {
+  margin: 0px;
+  font-size: 40px;
+}

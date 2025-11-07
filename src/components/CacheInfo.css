@@ -1,0 +1,11 @@
+.cacheInfo {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (pointer:none), (pointer:coarse) {
+    .cacheInfo {
+        position: relative;
+    }
+}

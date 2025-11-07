@@ -1,0 +1,20 @@
+.locationContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.vertRule {
+    border-left:2px solid lightgray;
+    margin-top:    15px;
+    margin-bottom: 15px;
+}
+
+@media (pointer:none), (pointer:coarse) {
+    .vertRule {
+        display: none;
+    }
+    .locationContainer {
+        flex-direction: column;
+    }
+    
+}

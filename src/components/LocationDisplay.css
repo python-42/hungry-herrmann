@@ -1,0 +1,19 @@
+#locationRoot {
+    margin: 10px;
+    margin-bottom: 0px;
+}
+
+.menuContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.mealContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    text-align: center;
+    margin: 0px;
+}
