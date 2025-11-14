@@ -1,6 +1,6 @@
 import { getDateISOString } from "./StringUtil";
 
-export const BASE_URL = "http://localhost:8080/https://apiv4.dineoncampus.com/locations/"
+export const BASE_URL = "https://api.jlh-mtu.dev/https://apiv4.dineoncampus.com/locations/"
 export const FOOD_CATEGORIES = ["taste of home", "the diner", "flame", "the kitchen"];
 export const PERIODS = ["lunch", "dinner"];
 export const CACHE_EVENT = "cache";
