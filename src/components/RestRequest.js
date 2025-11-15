@@ -1,8 +1,6 @@
 import { CACHE_EVENT } from "../ApiDirectory";
 import { getDateISOString } from "../StringUtil";
 
-const eventName = "cache";
-
 /**
  * Requests data from the API. May use cached data
  * @param {string} url url to send request to

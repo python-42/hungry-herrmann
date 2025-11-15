@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { FOOD_CATEGORIES, locationDetailsURL, menuRequestURL, periodIdRequest, PERIODS } from "../ApiDirectory";
 import LocationHeader from "./LocationHeader";
-import FoodMenu from "./FoodMenu";
 import { request } from "./RestRequest";
 import "./LocationDisplay.css"
 import MealDisplay from "./MealDisplay";
@@ -37,7 +36,14 @@ function LocationDisplay({id}) {
         }
 
         request(periodIdRequest(id), 
-            (message) => {}, 
+            (message) => {
+                setMenu(   
+                    <>
+                        <p>Failed to load menu information:</p>
+                        <p>{message}</p>
+                    </>
+                );
+            },
             (data) => {
                 const periods = data.periods;
                 const newMenu = [];
