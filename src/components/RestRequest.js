@@ -4,13 +4,15 @@ import { getDateISOString } from "../StringUtil";
 /**
  * Requests data from the API. May use cached data
  * @param {string} url url to send request to
+ * @param {string} key cache key associated with this url. This should be a key that is unique to this request, bt doesn't change from day to day
  * @param {function} failureCallback function to call if request fails. Should accept a string as parameter
  * @param {function} successCallback function to call if request succeeds, or if cached data is used. Should accept object as parameter
+ * @param {boolean} useCache whether we should use cached values or not. Default true
  * @returns true if cached data was used, false otherwise
  */
-export function request(url, failureCallback, successCallback, useCache = true) {
+export function request(url, key, failureCallback, successCallback, useCache = true) {
     // check if we have cached data for this request
-    let cached = localStorage.getItem(url);
+    let cached = localStorage.getItem(key);
     if (cached != null && useCache) {
         cached = JSON.parse(cached);
 
@@ -22,7 +24,7 @@ export function request(url, failureCallback, successCallback, useCache = true) 
         }else {
             // cached data is expired, clear it out to save time in the future
             console.debug("cached data invalid for " + url);
-            localStorage.removeItem(url);
+            localStorage.removeItem(key);
             window.dispatchEvent(new CustomEvent(CACHE_EVENT));
         }
     }
@@ -41,7 +43,7 @@ export function request(url, failureCallback, successCallback, useCache = true) 
                 validDate : getDateISOString(),
                 data : JSON.stringify(data)
             }
-            localStorage.setItem(url, JSON.stringify(toCache));
+            localStorage.setItem(key, JSON.stringify(toCache));
             window.dispatchEvent(new CustomEvent(CACHE_EVENT));
         }
 

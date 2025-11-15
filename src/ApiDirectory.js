@@ -9,10 +9,22 @@ export const locationDetailsURL = (locationID) => {
     return BASE_URL + locationID + "/details";
 }
 
+export const locationDetailsKey = (locationID) => {
+    return locationID + ":details"
+}
+
 export const menuRequestURL = (locationID, periodID) => {
     return BASE_URL + locationID + "/menu?date=" + getDateISOString() + "&period=" + periodID;
 }
 
+export const menuRequestKey = (periodID, periodName) => {
+    return periodID + ":" + periodName;
+}
+
 export const periodIdRequest = (locationID) => {
     return BASE_URL + locationID + "/periods?date=" + getDateISOString();
+}
+
+export const periodIdKey = (locationID) => {
+    return locationID + ":periods";
 }

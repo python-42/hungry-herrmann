@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FOOD_CATEGORIES, locationDetailsURL, menuRequestURL, periodIdRequest, PERIODS } from "../ApiDirectory";
+import { locationDetailsKey, locationDetailsURL, periodIdKey, periodIdRequest, PERIODS } from "../ApiDirectory";
 import LocationHeader from "./LocationHeader";
 import { request } from "./RestRequest";
 import "./LocationDisplay.css"
@@ -10,7 +10,7 @@ function LocationDisplay({id}) {
     const [menu, setMenu] = useState(<p>Loading...</p>);
 
     function loadHeader(useCache) {
-        return request(locationDetailsURL(id), 
+        return request(locationDetailsURL(id), locationDetailsKey(id),
             (message) => {
                 console.log(message);
                 setHeader(
@@ -35,7 +35,7 @@ function LocationDisplay({id}) {
             // however, populating with cached information first is faster and gives us some information
         }
 
-        request(periodIdRequest(id), 
+        request(periodIdRequest(id), periodIdKey(id),
             (message) => {
                 setMenu(   
                     <>
@@ -49,7 +49,7 @@ function LocationDisplay({id}) {
                 const newMenu = [];
                 for (let i in periods) {
                     if (PERIODS.includes(periods[i].slug)) {
-                        newMenu.push(<MealDisplay locationID={id} periodID={periods[i].id} key={i}/>)
+                        newMenu.push(<MealDisplay locationID={id} periodID={periods[i].id} periodName={periods[i].slug} key={i}/>)
                     }
                 }
                 if (newMenu.length == 0) {

@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { FOOD_CATEGORIES, menuRequestURL } from "../ApiDirectory";
+import { FOOD_CATEGORIES, menuRequestKey, menuRequestURL } from "../ApiDirectory";
 import { request } from "./RestRequest";
 import FoodMenu from "./FoodMenu";
 
-function MealDisplay({ locationID, periodID }) {
+function MealDisplay({ locationID, periodID, periodName }) {
     const [menu, setMenu] = useState(<p>Loading menu...</p>);
     const [name, setName] = useState("");
 
     useEffect(() => {
-        request(menuRequestURL(locationID, periodID),
+        request(menuRequestURL(locationID, periodID), menuRequestKey(locationID, periodName),
             (message) => {
                 setMenu(
                     <>
